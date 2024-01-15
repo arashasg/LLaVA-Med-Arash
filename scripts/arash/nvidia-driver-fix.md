@@ -15,7 +15,15 @@ Update and upgrade your packages:
 sudo apt update
 sudo apt upgrade
 ```
+Search for nvidia drivers:
+```
+apt search nvidia-driver
+```
 Install the new Driver:
 ```
 sudo apt install nvidia-525
+```
+Finally, reboot to see the changes:
+```
+sudo reboot
 ```
