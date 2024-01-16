@@ -17,6 +17,7 @@ OUTPUT_DIR="./../../LLaMA-HF/"
 # Clone the GitHub repository
 git clone $REPO_URL
 
+# Reinstall transformers Library
 pip install git+https://github.com/huggingface/transformers
 
 cd transformers
