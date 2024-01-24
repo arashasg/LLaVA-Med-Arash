@@ -106,6 +106,9 @@ def eval_model(args):
     for i, line in enumerate(tqdm(questions)):
         idx = line["question_id"]
         image_file = line["image"]
+        if not os.path.exists(os.path.join(args.image_folder, image_file)):
+            print(os.path.join(args.image_folder, image_file))
+            continue
         qs = line["text"]
         cur_prompt = qs
         if mm_use_im_start_end:
@@ -120,7 +123,16 @@ def eval_model(args):
         conv.append_message(conv.roles[0], qs)
         prompt = conv.get_prompt()
         inputs = tokenizer([prompt])
+        
+        file_path = "address2.txt"
+        # Open the file in append mode
+        with open(file_path, 'a') as file:
+            # Write the string to the file
+            file.write(image_file)
 
+
+        if os.path.exists(os.path.join(args.image_folder, image_file)):
+            continue
         image = Image.open(os.path.join(args.image_folder, image_file))
         # image.save(os.path.join(save_image_folder, image_file))
         image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]

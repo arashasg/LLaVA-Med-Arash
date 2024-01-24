@@ -1,0 +1,8 @@
+*.gz
+*.json
+*.jsonl
+*.jpg
+*.gif
+*.pdf
+*.nxml
+data/pmc_articles/*
